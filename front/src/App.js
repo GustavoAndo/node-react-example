@@ -8,7 +8,7 @@ import CadastroUsuario from './components/CadastroUsuario'
 function App() {
   return (
     <Fragment>
-      <div class="container">
+      <div className="container">
         <h1 className="text-center mt-5">Tabela Usuarios</h1>
         <CadastroUsuario></CadastroUsuario>
         <TabelaUsuarios></TabelaUsuarios>

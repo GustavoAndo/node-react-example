@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 
 // imports
 import EditarUsuario from './EditarUsuario'
+import ExcluirUsuario from './ExcluirUsuario'
 
 function TabelaUsuarios() {
     const [usuarios, setUsuarios] = useState([])
@@ -40,6 +41,7 @@ function TabelaUsuarios() {
                         <td>{usuario.dinheiro}</td>
                         <td>
                             <EditarUsuario usuario={usuario}></EditarUsuario>
+                            <ExcluirUsuario idUsuario={usuario.id}></ExcluirUsuario>
                         </td>
                     </tr>
                 ))}

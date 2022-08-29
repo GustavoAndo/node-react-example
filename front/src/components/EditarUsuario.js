@@ -33,10 +33,10 @@ function EditarUsuario({ usuario }) {
 
     return (
         <Fragment>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#id${usuario.id}`}>
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#editarId${usuario.id}`}>
             Editar
             </button>
-            <div className="modal fade" id={`id${usuario.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={`editarId${usuario.id}`} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
@@ -90,7 +90,7 @@ function EditarUsuario({ usuario }) {
                 <div className="modal-footer">
                     <button 
                         type="button" 
-                        className="btn btn-danger"
+                        className="btn btn-secondary"
                         data-dismiss="modal" 
                         onClick={cancelar}                   
                     >Cancelar</button>

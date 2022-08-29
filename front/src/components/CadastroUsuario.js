@@ -36,7 +36,7 @@ function CadastroUsuario() {
                 Cadastrar novo usuário
                 </button>
             </div>
-            <div className="modal fade" id="main-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id="main-modal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
@@ -83,13 +83,13 @@ function CadastroUsuario() {
                 <div className="modal-footer">
                     <button 
                         type="button" 
-                        className="btn btn-danger"
+                        className="btn btn-secondary"
                         data-dismiss="modal" 
                         onClick={cancelar}                   
                     >Cancelar</button>
                     <button 
                         type="button" 
-                        className="btn btn-primary" 
+                        className="btn btn-success" 
                         data-dismiss="modal"
                         onClick={cadastrarUsuario} 
                     >Cadastrar</button>
