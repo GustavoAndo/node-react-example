@@ -67,10 +67,41 @@ app.get('/usuarios', async(req, res) => {
 
 // update
 
+app.get('/usuario/:id', async(req, res) => {
+    try {
+        const { id } = req.params 
+
+        const usuario = await bd.query(
+            "SELECT * from usuarios WHERE id = $1", [id]
+        )
+        res.json(usuario.rows[0])   
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+app.put('/editarUsuario/:id', async(req, res) => {
+    try {
+        const { id } = req.params
+        const { nome } = req.body
+        const { email } = req.body
+        const { idade } = req.body
+        const { dinheiro } = req.body
+
+        const editarUsuario = await bd.query(
+            "UPDATE usuarios SET nome = $1, email = $2, idade = $3, dinheiro = $4 WHERE id = $5", 
+            [nome, email, idade, dinheiro, id]
+        )
+        res.json("Usuario Atualizado!")
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 // delete
 
 
+// START SERVER
 app.listen(SERVER_PORT, () => {
     console.log('Servidor rodando na url: http://localhost:' + SERVER_PORT)
 })
