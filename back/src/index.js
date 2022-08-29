@@ -36,7 +36,7 @@ app.post('/teste', async(req, res) => {
 
 // create
 
-app.post('/adicionarUsuario', async(req, res) => {
+app.post('/cadastrarUsuario', async(req, res) => {
     try {
         const { nome } = req.body
         const { email } = req.body
