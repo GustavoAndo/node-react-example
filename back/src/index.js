@@ -46,6 +46,7 @@ app.post('/adicionarUsuario', async(req, res) => {
         const novoUsuario = await bd.query(
             "INSERT INTO usuarios (nome, email, idade, dinheiro, data_cadastrado) VALUES ($1, $2, $3, $4, 'now') RETURNING *", [nome, email, idade, dinheiro]
         )
+        res.json(novoUsuario.rows[0])
     } catch (error) {
         console.error(error)
     }
@@ -53,6 +54,16 @@ app.post('/adicionarUsuario', async(req, res) => {
 
 // read
 
+app.get('/usuarios', async(req, res) => {
+    try {
+        const usuarios = await bd.query(
+            "SELECT * FROM usuarios"
+        )
+        res.json(usuarios.rows)
+    } catch (error) {
+        console.error(error)   
+    }
+})
 
 // update
 
