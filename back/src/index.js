@@ -92,7 +92,7 @@ app.put('/editarUsuario/:id', async(req, res) => {
             "UPDATE usuarios SET nome = $1, email = $2, idade = $3, dinheiro = $4 WHERE id = $5", 
             [nome, email, idade, dinheiro, id]
         )
-        res.json("Usuario Atualizado!")
+        res.json('Usuario Atualizado!')
     } catch (error) {
         console.error(error)
     }
@@ -100,6 +100,18 @@ app.put('/editarUsuario/:id', async(req, res) => {
 
 // delete
 
+app.delete('/excluirUsuario/:id', async(req, res) => {
+    try {
+        const { id } = req.params
+
+        const excluirUsuario = await bd.query(
+            "DELETE FROM usuarios WHERE id = $1", [id]
+        )
+        res.json('Usuario Excluído!')
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 // START SERVER
 app.listen(SERVER_PORT, () => {
