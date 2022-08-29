@@ -23,16 +23,16 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-
+*/
 app.post('/teste', async(req, res) => {
     try {
         const novoUsuario = await bd.query(
-            "INSERT INTO usuarios (nome, email, idade, dinheiro, data_cadastrado) VALUES ('Gustavo', 'gustavo.k.ando@gmail.com', 19, 0.50, 'now')")
+            "INSERT INTO usuarios (nome, email, num_jogos, dinheiro, data_cadastro) VALUES ('Gustavo', 'gustavo.k.ando@gmail.com', 19, 0.50, '2003-08-02')")
     } catch (error) {
         console.error(error)
     }
 })
-*/
+
 
 // create
 
@@ -40,11 +40,11 @@ app.post('/cadastrarUsuario', async(req, res) => {
     try {
         const { nome } = req.body
         const { email } = req.body
-        const { idade } = req.body
+        const { numJogos } = req.body
         const { dinheiro } = req.body
 
         const novoUsuario = await bd.query(
-            "INSERT INTO usuarios (nome, email, idade, dinheiro, data_cadastrado) VALUES ($1, $2, $3, $4, 'now') RETURNING *", [nome, email, idade, dinheiro]
+            "INSERT INTO usuarios (nome, email, num_jogos, dinheiro, data_cadastro) VALUES ($1, $2, $3, $4, 'now') RETURNING *", [nome, email, numJogos, dinheiro]
         )
         res.json(novoUsuario.rows[0])
     } catch (error) {
@@ -85,12 +85,13 @@ app.put('/editarUsuario/:id', async(req, res) => {
         const { id } = req.params
         const { nome } = req.body
         const { email } = req.body
-        const { idade } = req.body
+        const { numJogos } = req.body
         const { dinheiro } = req.body
+        const { dataCadastro } = req.body
 
         const editarUsuario = await bd.query(
-            "UPDATE usuarios SET nome = $1, email = $2, idade = $3, dinheiro = $4 WHERE id = $5", 
-            [nome, email, idade, dinheiro, id]
+            "UPDATE usuarios SET nome = $1, email = $2, num_jogos = $3, dinheiro = $4, data_cadastro = $5 WHERE id = $6", 
+            [nome, email, numJogos, dinheiro, dataCadastro, id]
         )
         res.json('Usuario Atualizado!')
     } catch (error) {

@@ -1,15 +1,15 @@
 import React, { Fragment, useState } from 'react'
 
 function CadastroUsuario() {
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [idade, setIdade] = useState("");
-    const [dinheiro, setDinheiro] = useState("");
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
+    const [numJogos, setNumJogos] = useState("")
+    const [dinheiro, setDinheiro] = useState("")
   
     const cadastrarUsuario = async e => {
       e.preventDefault();
       try {
-        const body = { nome, email, idade, dinheiro };
+        const body = { nome, email, numJogos, dinheiro };
         const response = await fetch('http://localhost:3001/cadastrarUsuario', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -22,6 +22,13 @@ function CadastroUsuario() {
       }
     };
 
+    const cancelar = () => {
+        setNome("")
+        setEmail("")
+        setNumJogos("")
+        setDinheiro("")
+    }
+
     return (
         <Fragment>
             <div className="text-center">
@@ -33,7 +40,7 @@ function CadastroUsuario() {
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">Cadastrar um novo usuário</h5>
+                    <h5 className="modal-title text-success" id="exampleModalLongTitle">Cadastrar um novo usuário</h5>
                     <button 
                         type="button" 
                         className="close" 
@@ -60,10 +67,10 @@ function CadastroUsuario() {
                     />
                     <input 
                         type='number' 
-                        placeholder='Idade' 
+                        placeholder='Número de Jogos' 
                         className='form-control mb-2' 
-                        value={idade}
-                        onChange={e => setIdade(e.target.value)}
+                        value={numJogos}
+                        onChange={e => setNumJogos(e.target.value)}
                     />
                     <input 
                         type='text' 
@@ -77,8 +84,9 @@ function CadastroUsuario() {
                     <button 
                         type="button" 
                         className="btn btn-danger"
-                        data-dismiss="modal"                    
-                    >Fechar</button>
+                        data-dismiss="modal" 
+                        onClick={cancelar}                   
+                    >Cancelar</button>
                     <button 
                         type="button" 
                         className="btn btn-primary" 

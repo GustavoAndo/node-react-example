@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
 
+// imports
+import EditarUsuario from './EditarUsuario'
+
 function TabelaUsuarios() {
     const [usuarios, setUsuarios] = useState([])
 
-    // Pegando usuarios do back
     const getUsuarios = async() => {
         try {
             const response = await fetch('http://localhost:3001/usuarios')
@@ -20,11 +22,11 @@ function TabelaUsuarios() {
     return (
         <Fragment>
             <table className="table table-striped mt-4 text-center">
-            <thead class="thead-dark">
+            <thead className="thead-dark">
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Idade</th>
+                    <th scope="col">Nº de Jogos</th>
                     <th scope="col">Dinheiro</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -34,9 +36,10 @@ function TabelaUsuarios() {
                     <tr key={usuario.id}>
                         <td>{usuario.nome}</td>
                         <td>{usuario.email}</td>
-                        <td>{usuario.idade}</td>
+                        <td>{usuario.num_jogos}</td>
                         <td>{usuario.dinheiro}</td>
                         <td>
+                            <EditarUsuario usuario={usuario}></EditarUsuario>
                         </td>
                     </tr>
                 ))}

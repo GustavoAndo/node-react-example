@@ -4,7 +4,7 @@ CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
     email VARCHAR(100),
-    idade INTEGER,
+    num_jogos INTEGER,
     dinheiro NUMERIC,
-    data_cadastrado TIMESTAMP
+    data_cadastro DATE
 );
