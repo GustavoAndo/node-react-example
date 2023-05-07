@@ -15,7 +15,7 @@ AppDataSource
         console.log("Banco de dados conectado!")
     })
     .catch((e) => {
-        console.error("Erro na conxeão do banco de dados:", e)
+        console.error("Erro na conexão do banco de dados:", e)
     })
 
 app.get('/', (req, res) => {

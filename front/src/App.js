@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css';
 import TabelaCompras from './components/TabelaCompras'
 import CadastroItem from './components/CadastroItem'
 
