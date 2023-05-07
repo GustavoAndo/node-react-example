@@ -1,19 +1,18 @@
-import React , { Fragment } from 'react'
+import React from 'react'
 import './App.css';
-
-// imports
-import TabelaUsuarios from './components/TabelaUsuarios'
-import CadastroUsuario from './components/CadastroUsuario'
+import TabelaCompras from './components/TabelaCompras'
+import CadastroItem from './components/CadastroItem'
 
 function App() {
+
   return (
-    <Fragment>
+    <>
       <div className="container">
-        <h1 className="text-center mt-5">Tabela Usuarios</h1>
-        <CadastroUsuario></CadastroUsuario>
-        <TabelaUsuarios></TabelaUsuarios>
+        <h1 className="text-center mt-5">Lista de Compras</h1>
+        <CadastroItem></CadastroItem>
+        <TabelaCompras></TabelaCompras>
       </div>
-    </Fragment>
+    </>
   );
 }
 

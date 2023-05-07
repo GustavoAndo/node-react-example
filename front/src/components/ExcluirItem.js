@@ -1,28 +1,29 @@
-import React, { Fragment , useState } from 'react'
+import React from 'react'
 
-function ExcluirUsuario({ idUsuario }) {
-    const excluirUsuario = async(id) => {
-        try {
-            const excluirTarefa = await fetch('http://localhost:3001/excluirUsuario/' + id, {
-                method: 'DELETE'
+function ExcluirItem({ idItem, itens, setItens }) {
+    const excluirItem = async() => {
+        fetch('http://localhost:3001/compra/' + idItem, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
             })
-            console.log(excluirTarefa)
-            window.location = '/'
-        } catch (error) {
-            console.error(error)
-        }
+            .then((data) => {
+                console.log(data)
+            })
+            .catch((err) => console.log(err))
     }
 
     return (
-        <Fragment>
-            <button type="button" className="btn btn-danger ml-1" data-toggle="modal" data-target={`#excluirId${idUsuario}`}>
+        <>
+            <button type="button" className="btn btn-danger ml-1" data-toggle="modal" data-target={`#excluirId${idItem}`}>
             Excluir
             </button>
-            <div className="modal fade" id={`excluirId${idUsuario}`} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={`excluirId${idItem}`} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title text-danger" id="exampleModalLongTitle">Tem certeza que deseja excluir este usuário?</h5>
+                    <h5 className="modal-title text-danger" id="exampleModalLongTitle">Tem certeza que deseja excluir este item?</h5>
                     <button 
                         type="button" 
                         className="close" 
@@ -42,14 +43,14 @@ function ExcluirUsuario({ idUsuario }) {
                         type="button" 
                         className="btn btn-danger" 
                         data-dismiss="modal"
-                        onClick={()=>excluirUsuario(idUsuario)}
+                        onClick={excluirItem}
                     >Excluir</button>
                 </div>
                 </div>
             </div>
             </div>
-        </Fragment>
+        </>
     )
 }
 
-export default ExcluirUsuario
+export default ExcluirItem
